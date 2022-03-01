@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import useForm from '../hooks/useForm';
 
+import useForm from '../hooks/useForm';
 import UsersList from './UsersList';
 import Input from './Input';
 import Button from './Button';
@@ -16,6 +16,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setUsers([...users, inputsForm]);
     resetForm();
     // output -> [{inputsForms}]
@@ -51,11 +52,11 @@ const Form = () => {
         <Button>Send</Button>
       </form>
 
+      {users.length ? <UsersList users={users} /> : null}
+
       <p className="text-center text-gray-500 text-xs">
         &copy;2022 José Contreras. All rights reserved.
       </p>
-
-      {users.length ? <UsersList users={users} /> : null}
     </div>
   );
 };
